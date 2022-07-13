@@ -27,10 +27,10 @@
 "     text which is currently selected. NOTE: Currently recommend searching
 "     only one line at a time. 
 
-if !exists('g:searchfox_loaded') || &cp
+if exists('g:searchfox_plugin_loaded') || &cp
   finish
 endif
-let g:searchfox_loaded = 1
+let g:searchfox_plugin_loaded = 1
 
 " Set `g:searchfox_url` to use a different repository URL than the default here
 if !exists('g:searchfox_url')
