@@ -23,3 +23,16 @@ This is the repository you want to search against on Searchfox.
 `:SearchfoxFileLines` - For use in visual mode. Open the Searchfox source for the current file, with your highlighted lines also highlighted in Searchfox. 
 
 `:SearchfoxSearchText` - For use in visual mode. Uses your selected text as a search query. :warning: NOTE: Currently recommended for only a single line at a time. 
+
+## installation
+### vim 8+ native
+
+`git clone` this repo into `~/.vim/pack`
+
+### [vim-plug](https://github.com/junegunn/vim-plug)
+
+`Plug 'cmkm/vim-searchfox'`
+
+### [Vundle](https://github.com/VundleVim/Vundle.vim)
+
+`PluginInstall 'cmkm/vim-searchfox'`
