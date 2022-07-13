@@ -1,4 +1,38 @@
-" Set `g:searchfox_url` to use a different URL than the default here
+"  This Source Code Form is subject to the terms of the Mozilla Public
+"  License, v. 2.0. If a copy of the MPL was not distributed with this file,
+"  You can obtain one at http://mozilla.org/MPL/2.0/. 
+"                          _      __          
+"                         | |    / _|         
+"  ___  ___  __ _ _ __ ___| |__ | |_ _____  __
+" / __|/ _ \/ _` | '__/ __| '_ \|  _/ _ \ \/ /
+" \__ \  __/ (_| | | | (__| | | | || (_) >  < 
+" |___/\___|\__,_|_|  \___|_| |_|_| \___/_/\_\
+"
+" Global plugin for Searchfox utilities
+" Maintainer: Cieara Meador <hello@cmkm.dev>                                             
+"
+" Commands:
+" :SearchfoxFile
+"     Get the Searchfox file URL for the file currently open in the active
+"     buffer. Uses OS `open` utility, and copies the path to the clipboard, 
+"     if supported. 
+"
+" :SearchfoxFileLines
+"     In Visual mode (accepts a range), get the Searchfox file URL for the
+"     file currently open in the active buffer, _and_ highlights selected
+"     lines in the Searchfox interface.
+"
+" :SearchfoxSearchText
+"     In Visual mode (accepts a range), perform a Searchfox search for the
+"     text which is currently selected. NOTE: Currently recommend searching
+"     only one line at a time. 
+
+if !exists('g:searchfox_loaded') || &cp
+  finish
+endif
+let g:searchfox_loaded = 1
+
+" Set `g:searchfox_url` to use a different repository URL than the default here
 if !exists('g:searchfox_url')
   let g:searchfox_url = 'https://searchfox.org/mozilla-central/'
 endif
