@@ -9,8 +9,9 @@ if !exists('g:searchfox_directory')
 endif
 
 function! s:searchfox_relevant_path()
+  let l:searchfox_directory_mod = fnamemodify(g:searchfox_directory, ':p:h')
   let l:current_full_path = bufname('%')
-  return substitute(l:current_full_path, g:searchfox_directory, '', '')
+  return substitute(l:current_full_path, l:searchfox_directory_mod, '', '')
 endfunction
 
 " Get Searchfox URL for the file currently open
@@ -20,8 +21,7 @@ function! searchfox#SearchfoxURL()
   if has('clipboard')
     let @* = s:searchfox_url
   endif
-  execute "!open '" . s:searchfox_url . "'"
-  " echo s:searchfox_url
+  execute 'silent !open ' . shellescape(s:searchfox_url, 1)
 endfunction
 
 function! searchfox#SearchfoxVisualURL()
@@ -29,12 +29,11 @@ function! searchfox#SearchfoxVisualURL()
   let [lnum1, col1] = getpos("'<")[1:2]
   let [lnum2, col2] = getpos("'>")[1:2]
   let l:relevant_path = s:searchfox_relevant_path()
-  let s:searchfox_url = g:searchfox_url . l:relevant_path . "#" . lnum1 . "-" . lnum2
+  let s:searchfox_url = g:searchfox_url . l:relevant_path . '#' . lnum1 . '-' . lnum2
   if has('clipboard')
     let @* = s:searchfox_url
   endif
-  execute "!open '" . s:searchfox_url . "'"
-  " echo s:searchfox_url
+  execute '!open ' . shellescape(s:searchfox_url, 1)
 endfunction
 
 " TODO: rename commands
