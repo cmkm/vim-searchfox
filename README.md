@@ -2,15 +2,24 @@
 
 This is a utility for vim users who work with Searchfox. This plugin lets you quickly search on Searchfox for the file currently in your active buffer. 
 
-## variables
+## configuration
 You should override these variables in your `.vimrc`: 
 
-### `g:searchfox_directory`
+### base directory
 ```
-let g:searchfox_directory = '/Users/you/dev/mozilla/'
+let g:searchfox_directory = '/Users/you/dev/mozilla-central/'
 ```
+This should be the top-level directory where your source code lives. This should end in a trailing slash. 
+
+### repository
+```
+let g:searchfox_url = 'https://searchfox.org/mozilla-central/'
+```
+This is the repository you want to search against on Searchfox. 
 
 ## commands
-`:SearchfoxURL` - Open a Searchfox search for the current file.  
+`:SearchfoxFile` - Open the Searchfox source for the current file.  
 
-`:SearchfoxVisualURL` - For use in visual mode. Open a Searchfox search for the current file, with your highlighted lines also highlighted in Searchfox. 
+`:SearchfoxFileLines` - For use in visual mode. Open the Searchfox source for the current file, with your highlighted lines also highlighted in Searchfox. 
+
+`:SearchfoxSearchText` - For use in visual mode. Uses your selected text as a search query. :warning: NOTE: Currently recommended for only a single line at a time. 
